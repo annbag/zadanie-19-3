@@ -34,3 +34,50 @@ const THUMB_DOWN_COMMENT = 'THUMB_DOWN_COMMENT';
 	id: 14,
 	text: 'Add unlike'
 }
+
+function addComment(text) {
+	return {
+		type: ADD_COMMENT,
+		text,
+        id: uuid.v4()
+	}
+}
+
+function editComment(text) {
+	return {
+		type: EDIT_COMMENT,
+		text,
+        id: uuid.v4()
+	}
+}
+
+function removeComment(id) {
+	return {
+		type: REMOVE_COMMENT,
+		id
+	}
+}
+
+function thumbUpComment(text) {
+	return {
+		type: THUMB_UP_COMMENT,
+		text,
+		id: uuid.v4()
+	}
+}
+
+function thumbDownComment(text) {
+	return {
+		type: THUMB_DOWN_COMMENT,
+		text,
+		id: uuid.v4()
+	}
+}
+
+const boundAddComment = text => dispatch(addComment(text));
+const boundEditComment = text => dispatch(editComment(text)); 
+const boundRemoveComment = text => dispatch(removeComment(text));
+const boundThumbUpComment = text => dispatch(thumbUpComment(text));
+const boundThumbDownComment = text => dispatch(thumbDownComment(text));
+
+boundAddComment('New comment!');
