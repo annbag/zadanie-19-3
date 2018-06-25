@@ -26,13 +26,13 @@ const THUMB_DOWN_COMMENT = 'THUMB_DOWN_COMMENT';
 {
 	type: THUMB_UP_COMMENT,
 	id: 13,
-	text: 'Add like'
+	thumbs: 3,
 }
 
 {
 	type: THUMB_DOWN_COMMENT,
 	id: 14,
-	text: 'Add unlike'
+	thumbs: -4,
 }
 
 function addComment(text) {
@@ -58,26 +58,27 @@ function removeComment(id) {
 	}
 }
 
-function thumbUpComment(text) {
+function thumbUpComment(thumbs) {
 	return {
 		type: THUMB_UP_COMMENT,
-		text,
+		thumbs,
 		id: uuid.v4()
 	}
 }
 
-function thumbDownComment(text) {
+function thumbDownComment(thumbs) {
 	return {
 		type: THUMB_DOWN_COMMENT,
-		text,
+		thumbs,
 		id: uuid.v4()
 	}
 }
 
 const boundAddComment = text => dispatch(addComment(text));
 const boundEditComment = text => dispatch(editComment(text)); 
-const boundRemoveComment = text => dispatch(removeComment(text));
-const boundThumbUpComment = text => dispatch(thumbUpComment(text));
-const boundThumbDownComment = text => dispatch(thumbDownComment(text));
+const boundRemoveComment = text => dispatch(removeComment(id));
+const boundThumbUpComment = text => dispatch(thumbUpComment(thumbs));
+const boundThumbDownComment = text => dispatch(thumbDownComment(thumbs));
 
 boundAddComment('New comment!');
+boundThumbUpComment(15);
